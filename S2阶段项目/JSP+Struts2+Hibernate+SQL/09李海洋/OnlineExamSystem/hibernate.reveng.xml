@@ -14,10 +14,34 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="t_user" schema="dbo" catalog="db_exam"
-	class="com.qhit.lh.g4.sea.exam.common.bean.User">
+	<table name="t_user" schema="dbo" catalog="db_exam"
+		class="com.qhit.lh.g4.sea.exam.common.bean.User">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="t_machineQuestion" schema="dbo" catalog="db_exam"
+		class="com.qhit.lh.g4.sea.exam.tkgl.bean.MachineQuestion">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="t_writtenQuestion" schema="dbo" catalog="db_exam"
+		class="com.qhit.lh.g4.sea.exam.tkgl.bean.WrittenQuestion">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="t_course" schema="dbo" catalog="db_exam"
+		class="com.qhit.lh.g4.sea.exam.kmgl.bean.Course">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="t_classInfo" schema="dbo" catalog="db_exam"
+	class="com.qhit.lh.g4.sea.exam.bjgl.bean.ClassInfo">
 	<primary-key>
-		<generator class="assigned"></generator>
+		<generator class="native"></generator>
 	</primary-key>
 </table>
 </hibernate-reverse-engineering>

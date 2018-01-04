@@ -9,6 +9,10 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
+    
+    <interceptors>
+    		<interceptor name="loginInterceptor" class="com.qhit.lh.g4.sea.exam.common.interceptor.LoginInterceptor"></interceptor>
+    </interceptors>
 
 		<!-- 
         <global-results>
@@ -21,7 +25,9 @@
 		 -->
         
     </package>
-
+    
    <include file="com/qhit/lh/g4/sea/exam/common/config/user.xml"/>
+   <include file="com/qhit/lh/g4/sea/exam/tkgl/config/Question.xml"/>
+   <include file="com/qhit/lh/g4/sea/exam/jsgl/config/teacher.xml"/>
 
 </struts>

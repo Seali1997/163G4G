@@ -21,8 +21,8 @@
         <property name="enterSchool" type="java.lang.String">
             <column name="enterSchool" length="4" not-null="true" />
         </property>
-        <property name="cid" type="java.lang.Integer">
-            <column name="cid" not-null="true" />
+        <property name="ccode" type="java.lang.String">
+            <column name="cCode" length="20" not-null="true" />
         </property>
         <property name="photo" type="java.lang.String">
             <column name="photo" length="50" />
@@ -70,6 +70,7 @@
             <column name="remarks" length="20" />
         </property>
         
+        <!-- 1-1 -->
         <one-to-one name="user" class="com.qhit.lh.g4.sea.exam.common.bean.User" cascade="all"></one-to-one>
     </class>
 </hibernate-mapping>

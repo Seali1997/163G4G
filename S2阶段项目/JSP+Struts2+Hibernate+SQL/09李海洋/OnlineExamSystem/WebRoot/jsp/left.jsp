@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -7,9 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'left.jsp' starting page</title>
+    <title>导航</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -17,6 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="css/common.css" type="text/css" />
+	
+	
 <script type="text/javascript">
         //默认显示第一个
         var preClassName = "left_nav_0";
@@ -142,34 +143,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var t;
         function setStudentMenu() {
         	t = outlookbar.addtitle('后台功能', '后台管理', 1);
-            outlookbar.additem('个人信息', t, '');
-            outlookbar.additem('在线考试', t, '');
-            outlookbar.additem('笔试成绩', t, '');
-            outlookbar.additem('机试成绩', t, ''); 
-    		outlookbar.additem('修改密码', t, '');
+            outlookbar.additem('个人信息', t, 'developing.jsp');
+            outlookbar.additem('在线考试', t, 'developing.jsp');
+            outlookbar.additem('笔试成绩', t, 'developing.jsp');
+            outlookbar.additem('机试成绩', t, 'developing.jsp'); 
+    		outlookbar.additem('修改密码', t, 'developing.jsp');
         }
         function setTeacherMenu() {
         	t = outlookbar.addtitle('后台功能', '后台管理', 1);
-            outlookbar.additem('学生信息', t, '');
-            outlookbar.additem('考勤管理', t, '');
-            outlookbar.additem('题库管理', t, ''); 
-    		outlookbar.additem('试卷查询', t, '');
-            outlookbar.additem('成绩管理', t, '');
-            outlookbar.additem('修改密码', t, '');
+            outlookbar.additem('学生信息', t, 'developing.jsp');
+            outlookbar.additem('考勤管理', t, 'developing.jsp');
+            outlookbar.additem('题库管理', t, '../question/question_getCourseInfo'); 
+    		outlookbar.additem('试卷查询', t, 'developing.jsp');
+            outlookbar.additem('成绩管理', t, 'developing.jsp');
+            outlookbar.additem('修改密码', t, 'developing.jsp');
         }
         function setManagerMenu() {
         	t = outlookbar.addtitle('后台功能', '后台管理', 1);
-            outlookbar.additem('教师管理', t, '');
-            outlookbar.additem('班级管理', t, '');
-            outlookbar.additem('学生管理', t, '');
-            outlookbar.additem('题库管理', t, ''); 
-    		outlookbar.additem('试卷管理', t, '');
-            outlookbar.additem('成绩管理', t, '');
-            outlookbar.additem('修改密码', t, '');
+            outlookbar.additem('教师管理', t, '../teacher/teacher_getAll');
+            outlookbar.additem('班级管理', t, 'developing.jsp');
+            outlookbar.additem('学生管理', t, 'developing.jsp');
+            outlookbar.additem('题库管理', t, '../question/question_getCourseInfo'); 
+    		outlookbar.additem('试卷管理', t, 'developing.jsp');
+            outlookbar.additem('成绩管理', t, 'developing.jsp');
+            outlookbar.additem('修改密码', t, 'developing.jsp');
             
             t = outlookbar.addtitle('基本设置', '后台管理', 2);
-            outlookbar.additem('专业设置', t, '');
-            outlookbar.additem('科目管理', t, '');
+            outlookbar.additem('专业设置', t, 'developing.jsp');
+            outlookbar.additem('科目管理', t, 'developing.jsp');
         }
         switch (${user.role}) {
 		case 1:

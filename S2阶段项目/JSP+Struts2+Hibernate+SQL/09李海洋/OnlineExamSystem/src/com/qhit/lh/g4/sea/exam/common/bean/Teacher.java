@@ -17,17 +17,12 @@ public class Teacher implements java.io.Serializable {
 	private String post;
 	private String remarks;
 	
+	
+
+	//单向1-1
 	private User user;
 
 	// Constructors
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	/** default constructor */
 	public Teacher() {
@@ -53,7 +48,14 @@ public class Teacher implements java.io.Serializable {
 	}
 
 	// Property accessors
+	public User getUser() {
+		return user;
+	}
 
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public String getTid() {
 		return this.tid;
 	}

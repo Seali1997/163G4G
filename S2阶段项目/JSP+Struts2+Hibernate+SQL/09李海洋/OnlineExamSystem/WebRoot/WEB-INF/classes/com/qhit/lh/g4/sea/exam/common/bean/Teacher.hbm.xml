@@ -34,6 +34,7 @@
             <column name="remarks" length="100" />
         </property>
         
+        <!-- 1-1 -->
         <one-to-one name="user" class="com.qhit.lh.g4.sea.exam.common.bean.User" cascade="all"></one-to-one>
     </class>
 </hibernate-mapping>

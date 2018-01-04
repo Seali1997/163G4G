@@ -11,26 +11,8 @@ public class User implements java.io.Serializable {
 	private String name;
 	private String pwd;
 	private Integer role;
-	
-	private Student student;
-	private Teacher teacher;
+
 	// Constructors
-
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public Teacher getTeacher() {
-		return teacher;
-	}
-
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
 
 	/** default constructor */
 	public User() {

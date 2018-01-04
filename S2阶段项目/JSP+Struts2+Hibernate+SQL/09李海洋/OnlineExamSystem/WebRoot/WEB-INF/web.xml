@@ -14,4 +14,13 @@
   	<filter-name>Struts2</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <filter>
+  	<filter-name>Encode</filter-name>
+  	<filter-class>com.qhit.lh.g4.sea.exam.common.filter.Encode</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Encode</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

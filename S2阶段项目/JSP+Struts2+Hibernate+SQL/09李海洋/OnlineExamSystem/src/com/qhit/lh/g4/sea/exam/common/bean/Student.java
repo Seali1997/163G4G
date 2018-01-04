@@ -12,7 +12,7 @@ public class Student implements java.io.Serializable {
 	private String sname;
 	private String sex;
 	private String enterSchool;
-	private Integer cid;
+	private String ccode;
 	private String photo;
 	private String birthday;
 	private String idcard;
@@ -29,31 +29,24 @@ public class Student implements java.io.Serializable {
 	private String eduBg;
 	private String remarks;
 	
+	//单向一对一
 	private User user;
 	// Constructors
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	/** default constructor */
 	public Student() {
 	}
 
 	/** minimal constructor */
-	public Student(String sname, String sex, String enterSchool, Integer cid) {
+	public Student(String sname, String sex, String enterSchool, String ccode) {
 		this.sname = sname;
 		this.sex = sex;
 		this.enterSchool = enterSchool;
-		this.cid = cid;
+		this.ccode = ccode;
 	}
 
 	/** full constructor */
-	public Student(String sname, String sex, String enterSchool, Integer cid,
+	public Student(String sname, String sex, String enterSchool, String ccode,
 			String photo, String birthday, String idcard, String poutlook,
 			String province, String city, String tel, String address,
 			String ptel, String prelation, String hostelBuil, String hostelNo,
@@ -61,7 +54,7 @@ public class Student implements java.io.Serializable {
 		this.sname = sname;
 		this.sex = sex;
 		this.enterSchool = enterSchool;
-		this.cid = cid;
+		this.ccode = ccode;
 		this.photo = photo;
 		this.birthday = birthday;
 		this.idcard = idcard;
@@ -113,12 +106,12 @@ public class Student implements java.io.Serializable {
 		this.enterSchool = enterSchool;
 	}
 
-	public Integer getCid() {
-		return this.cid;
+	public String getCcode() {
+		return this.ccode;
 	}
 
-	public void setCid(Integer cid) {
-		this.cid = cid;
+	public void setCcode(String ccode) {
+		this.ccode = ccode;
 	}
 
 	public String getPhoto() {
@@ -179,6 +172,14 @@ public class Student implements java.io.Serializable {
 
 	public String getAddress() {
 		return this.address;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public void setAddress(String address) {
