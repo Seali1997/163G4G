@@ -1,0 +1,74 @@
+SQL> select name from v$database;
+
+NAME                                                                            
+------------------                                                              
+ORCL                                                                            
+
+SQL> show parameters db_name;
+
+NAME                                 TYPE                                       
+------------------------------------ ----------------------                     
+VALUE                                                                           
+------------------------------                                                  
+db_name                              string                                     
+orcl                                                                            
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+--------------                                                                  
+16-3月 -18                                                                      
+
+SQL> @f:/test.txt;
+
+表已创建。
+
+SQL> @f:/test1.txt;
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+
+提交完成。
+
+SQL> ttitle left '部门列表'
+SQL> btitle right '制作人：Sea'
+SQL> select * from dept;
+
+部门列表                                                                        
+       DID DNAME                                       MANAGER                  
+---------- ---------------------------------------- ----------                  
+TEL                                MASTER                                       
+------------------------------ ----------                                       
+         1 董事会                                            5                  
+1111111                                 0                                       
+                                                                                
+         2 市场部                                            6                  
+2222222                                 1                                       
+                                                                                
+         3 财务部                                            7                  
+                                                                     制作人：Sea
+
+部门列表                                                                        
+       DID DNAME                                       MANAGER                  
+---------- ---------------------------------------- ----------                  
+TEL                                MASTER                                       
+------------------------------ ----------                                       
+3333333                                 1                                       
+                                                                                
+         4 采购部                                            8                  
+4444444                                 1                                       
+                                                                                
+
+
+                                                                     制作人：Sea
+
+SQL> spool off;

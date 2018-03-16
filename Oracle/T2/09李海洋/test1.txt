@@ -1,0 +1,5 @@
+insert into dept values(1,'董事会',5,'1111111',0);
+insert into dept values(2,'市场部',6,'2222222',1);
+insert into dept values(3,'财务部',7,'3333333',1);
+insert into dept values(4,'采购部',8,'4444444',1);
+commit;

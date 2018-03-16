@@ -1,0 +1,7 @@
+create table dept(
+       did integer primary key,
+       dname varchar2(20),
+       manager integer,
+       tel varchar2(15),	
+       master integer
+);

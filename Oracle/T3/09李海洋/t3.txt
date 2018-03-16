@@ -1,0 +1,459 @@
+SQL> --部门表
+SQL> create table dept(
+  2  did integer primary key,--主键
+  3  dname varchar2(20),--部门名称
+  4  manager integer,--外键，部门经理
+  5  tel varchar2(30),--部门电话
+  6  master integer --外键，上级部门
+  7  );
+create table dept(
+             *
+第 1 行出现错误: 
+ORA-00955: 名称已由现有对象使用 
+
+
+SQL> select * from dept;
+
+    DEPTNO DNAME                        LOC                                     
+---------- ---------------------------- --------------------------              
+        10 ACCOUNTING                   NEW YORK                                
+        20 RESEARCH                     DALLAS                                  
+        30 SALES                        CHICAGO                                 
+        40 OPERATIONS                   BOSTON                                  
+
+SQL> drop table dept;
+drop table dept
+           *
+第 1 行出现错误: 
+ORA-02449: 表中的唯一/主键被外键引用 
+
+
+SQL> --部门表
+SQL> create table dept1(
+  2  did integer primary key,--主键
+  3  dname varchar2(20),--部门名称
+  4  manager integer,--外键，部门经理
+  5  tel varchar2(30),--部门电话
+  6  master integer --外键，上级部门
+  7  );
+
+表已创建。
+
+SQL> --员工表
+SQL> create table emp1(
+  2  eid integer primary key,--主键
+  3  ename varchar2(20),--员工名称
+  4  sex varchar2(1),--性别
+  5  hire date,--入职日期
+  6  sar number(8,2)，--工资
+  7  did integer,--外键。所属部门
+  8  );
+)
+*
+第 8 行出现错误: 
+ORA-00904: : 标识符无效 
+
+
+SQL> --员工表
+SQL> create table emp1(
+  2  eid integer primary key,--主键
+  3  ename varchar2(20),--员工名称
+  4  sex varchar2(1),--性别
+  5  hire date,--入职日期
+  6  sar number(8,2)，--工资
+  7  did integer  --外键。所属部门
+  8  );
+
+表已创建。
+
+SQL> --工作经历表
+SQL> create table history1(
+  2  hid integer primary key,--主键
+  3  stsrtdate date,  --入职时间
+  4  enddate date,  -结束时间
+  5  place varchar2(50), --公司名称
+  6  job varchar2(20),  --职位
+  7  eid integer --外键，所属员工
+  8  );
+enddate date,  -结束时间
+                      *
+第 4 行出现错误: 
+ORA-00904: : 标识符无效 
+
+
+SQL> --工作经历表
+SQL> create table history1(
+  2  hid integer primary key,--主键
+  3  stsrtdate date,  --入职时间
+  4  enddate date,  --结束时间
+  5  place varchar2(50), --公司名称
+  6  job varchar2(20),  --职位
+  7  eid integer --外键，所属员工
+  8  );
+
+表已创建。
+
+SQL> create table emptt as select ename,sex,hire from emp;
+create table emptt as select ename,sex,hire from emp
+                                       *
+第 1 行出现错误: 
+ORA-00904: "HIRE": 标识符无效 
+
+
+SQL> create table emptt as select ename,sex,hire from emp1;
+
+表已创建。
+
+SQL> select * from emptt;
+
+未选定行
+
+SQL> drop table emptt;
+
+表已删除。
+
+SQL> insert into emp1 values(12,'Sea','m',sysdate,8000,2);
+
+已创建 1 行。
+
+SQL> select * from emp1;
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+        12 Sea                                      m  16-3月 -18           8000
+         2                                                                      
+                                                                                
+
+SQL> insert into emp1 values(12,'Sea','m','12-5月-18',8000,2);
+insert into emp1 values(12,'Sea','m','12-5月-18',8000,2)
+*
+第 1 行出现错误: 
+ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C0010909) 
+
+
+SQL> insert into emp1 values(13,'Sea','m','12-5月-18',8000,2);
+
+已创建 1 行。
+
+SQL> insert into emp1 values(14,'Sea','m',sysdate-2,8000,2);
+
+已创建 1 行。
+
+SQL> insert into emp1 values(15,'Sea','m',to_date('2018-03-16','yyyy-mm-dd'),8000,2);
+
+已创建 1 行。
+
+SQL> update emp1 set sar=sar+500 where sar<9000;
+
+已更新4行。
+
+SQL> update emp1 set hire=to_date('2013-05-29','yyyy-mm-dd') where ename = 'Sea';
+
+已更新4行。
+
+SQL> delete emp1;
+
+已删除4行。
+
+SQL> insert into emp1 values(1,'Sea','m',sysdate-2,8000,2);
+
+已创建 1 行。
+
+SQL> insert into emp1 values(2,'bbb','m',sysdate-2,5600,2);
+
+已创建 1 行。
+
+SQL> insert into emp1 values(3,'ccc','m',sysdate-2,5800,2);
+
+已创建 1 行。
+
+SQL> insert into emp1 values(4,'ddd','m',sysdate-2,6900,2);
+
+已创建 1 行。
+
+SQL> insert into emp1 values(5,'eee','m',sysdate-2,9800,2);
+
+已创建 1 行。
+
+SQL> insert into emp1 values(6,'fff','m',sysdate-2,9250,2);
+
+已创建 1 行。
+
+SQL> select * from emp1 order by sar asc;
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         2 bbb                                      m  14-3月 -18           5600
+         2                                                                      
+                                                                                
+         3 ccc                                      m  14-3月 -18           5800
+         2                                                                      
+                                                                                
+         4 ddd                                      m  14-3月 -18           6900
+         2                                                                      
+                                                                                
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+         6 fff                                      m  14-3月 -18           9250
+         2                                                                      
+                                                                                
+         5 eee                                      m  14-3月 -18           9800
+         2                                                                      
+                                                                                
+
+已选择6行。
+
+SQL> select * from emp1 order by did asc, sar desc;
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         5 eee                                      m  14-3月 -18           9800
+         2                                                                      
+                                                                                
+         6 fff                                      m  14-3月 -18           9250
+         2                                                                      
+                                                                                
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         4 ddd                                      m  14-3月 -18           6900
+         2                                                                      
+                                                                                
+         3 ccc                                      m  14-3月 -18           5800
+         2                                                                      
+                                                                                
+         2 bbb                                      m  14-3月 -18           5600
+         2                                                                      
+                                                                                
+
+已选择6行。
+
+SQL> select * from emp1 where sar between 3000 and 5000;
+
+未选定行
+
+SQL> select * from emp1 where sar between 3000 and 6000;
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         2 bbb                                      m  14-3月 -18           5600
+         2                                                                      
+                                                                                
+         3 ccc                                      m  14-3月 -18           5800
+         2                                                                      
+                                                                                
+
+SQL> select * from emp1 where sar not between 3000 and 6000;
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+         4 ddd                                      m  14-3月 -18           6900
+         2                                                                      
+                                                                                
+         5 eee                                      m  14-3月 -18           9800
+         2                                                                      
+                                                                                
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         6 fff                                      m  14-3月 -18           9250
+         2                                                                      
+                                                                                
+
+SQL> select * from emp1 where did in (2,5);
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+         2 bbb                                      m  14-3月 -18           5600
+         2                                                                      
+                                                                                
+         3 ccc                                      m  14-3月 -18           5800
+         2                                                                      
+                                                                                
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         4 ddd                                      m  14-3月 -18           6900
+         2                                                                      
+                                                                                
+         5 eee                                      m  14-3月 -18           9800
+         2                                                                      
+                                                                                
+         6 fff                                      m  14-3月 -18           9250
+         2                                                                      
+                                                                                
+
+已选择6行。
+
+SQL> select * from emp1 where did not in (2,5);
+
+未选定行
+
+SQL> select * from emp1 where did not in (2,3);
+
+未选定行
+
+SQL> select * from emp1 where did not in (2,9);
+
+未选定行
+
+SQL> select * from emp1 where ename like 'S%';
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+
+SQL> select * from emp1 where ename like 'S_';
+
+未选定行
+
+SQL> select * from emp1 where ename not like 'S_';
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+         2 bbb                                      m  14-3月 -18           5600
+         2                                                                      
+                                                                                
+         3 ccc                                      m  14-3月 -18           5800
+         2                                                                      
+                                                                                
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         4 ddd                                      m  14-3月 -18           6900
+         2                                                                      
+                                                                                
+         5 eee                                      m  14-3月 -18           9800
+         2                                                                      
+                                                                                
+         6 fff                                      m  14-3月 -18           9250
+         2                                                                      
+                                                                                
+
+已选择6行。
+
+SQL> select * from emp1 where sex='m' and sar >6000;
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+         4 ddd                                      m  14-3月 -18           6900
+         2                                                                      
+                                                                                
+         5 eee                                      m  14-3月 -18           9800
+         2                                                                      
+                                                                                
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         6 fff                                      m  14-3月 -18           9250
+         2                                                                      
+                                                                                
+
+SQL> select * from emp1 where sex='m' or sar >6000;
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         1 Sea                                      m  14-3月 -18           8000
+         2                                                                      
+                                                                                
+         2 bbb                                      m  14-3月 -18           5600
+         2                                                                      
+                                                                                
+         3 ccc                                      m  14-3月 -18           5800
+         2                                                                      
+                                                                                
+
+       EID ENAME                                    SE HIRE                  SAR
+---------- ---------------------------------------- -- -------------- ----------
+       DID                                                                      
+----------                                                                      
+         4 ddd                                      m  14-3月 -18           6900
+         2                                                                      
+                                                                                
+         5 eee                                      m  14-3月 -18           9800
+         2                                                                      
+                                                                                
+         6 fff                                      m  14-3月 -18           9250
+         2                                                                      
+                                                                                
+
+已选择6行。
+
+SQL> select avg(sar) ,max(sar),min(sar) from emp1;
+
+  AVG(SAR)   MAX(SAR)   MIN(SAR)                                                
+---------- ---------- ----------                                                
+7558.33333       9800       5600                                                
+
+SQL> select count(eid),sum(sar) from emp1;
+
+COUNT(EID)   SUM(SAR)                                                           
+---------- ----------                                                           
+         6      45350                                                           
+
+SQL> select distinct(did) from emp1;
+
+       DID                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select avg(sar) as 平均工资 from emp1;
+
+  平均工资                                                                      
+----------                                                                      
+7558.33333                                                                      
+
+SQL> spool off
